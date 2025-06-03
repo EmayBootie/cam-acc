@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Camera</title>
+</head>
+<body>
+    <h1>Access Your Camera</h1>
+    <video id="video" width="640" height="480" autoplay></video>
+    <button onclick="startCamera()">Start Camera</button>
+
+    <script>
+        function startCamera() {
+            // Request permission and access to the camera
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    // Display the camera stream in the video element
+                    document.getElementById('video').srcObject = stream;
+                })
+                .catch(function(error) {
+                    console.log("Error accessing the camera: ", error);
+                });
+        }
+    </script>
+</body>
+</html>
